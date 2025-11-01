@@ -22,6 +22,14 @@ export default function BookTripSteps() {
             type="slideUp"
           />
 
+          {/* ✅ Added description below headline */}
+          <p className="text-gray-500 text-sm md:text-base mt-4 leading-relaxed max-w-md">
+            Planning your dream vacation has never been this simple. Follow
+            these three easy steps to choose your destination, make your
+            payment, and get ready for a hassle-free journey to your next
+            adventure.
+          </p>
+
           <div className="space-y-8 mt-10">
             {/* Step 1 */}
             <MotionWrapper
@@ -37,8 +45,8 @@ export default function BookTripSteps() {
                   Choose Destination
                 </h4>
                 <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna,
-                  tortor tempus.
+                  Browse and select your favorite destination from our curated
+                  list of top-rated travel spots around the world.
                 </p>
               </div>
             </MotionWrapper>
@@ -57,8 +65,8 @@ export default function BookTripSteps() {
                   Make Payment
                 </h4>
                 <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna,
-                  tortor tempus.
+                  Secure your booking instantly using our fast, safe, and
+                  multiple payment options.
                 </p>
               </div>
             </MotionWrapper>
@@ -77,8 +85,8 @@ export default function BookTripSteps() {
                   Reach Airport on Selected Date
                 </h4>
                 <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna,
-                  tortor tempus.
+                  Pack your bags and arrive at the airport on your chosen date —
+                  we’ll handle everything else.
                 </p>
               </div>
             </MotionWrapper>
@@ -87,7 +95,6 @@ export default function BookTripSteps() {
 
         {/* RIGHT SIDE CARD */}
         <MotionWrapper type="slideLeft" delay={0.4}>
-          {/* Make the card relative and overflow-hidden so internal absolute elements stay inside */}
           <div className="relative bg-white shadow-lg rounded-3xl p-4 md:p-6 max-w-sm mx-auto overflow-hidden">
             {/* Main Trip Image */}
             <img
@@ -114,12 +121,11 @@ export default function BookTripSteps() {
                     className="text-primary"
                   />
                 </div>
-
                 <span className="text-gray-500 text-sm">24 people going</span>
               </div>
             </div>
 
-            {/* Floating Progress Card - positioned inside card bounds (no negative offsets) */}
+            {/* Floating Progress Card */}
             <div className="absolute bottom-22 right-3 bg-white rounded-2xl shadow-xl p-3 w-38 md:w-44">
               <p className="text-xs text-gray-400 mb-1">Ongoing</p>
               <p className="font-semibold text-gray-800">Trip to Rome</p>

@@ -51,7 +51,7 @@ export default function HeroSection() {
                 <MotionWrapper type="slideLeft" delay={0.6}>
                   <Button
                     variant="outline"
-                    className="flex items-center gap-2 border-amber-400 text-amber-600 hover:bg-amber-100"
+                    className="border-amber-400 text-amber-600 hover:bg-amber-100"
                   >
                     <Icon name="Play" />
                     Play Demo
@@ -71,6 +71,7 @@ export default function HeroSection() {
         >
           <div className="relative flex justify-center md:justify-end">
             <img
+              loading="lazy"
               src={heroImage}
               alt="Traveler"
               className="w-full max-w-sm sm:max-w-md md:max-w-lg relative z-10"

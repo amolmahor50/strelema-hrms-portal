@@ -7,7 +7,7 @@ This project includes both a **public landing page** and a **protected admin das
 
 ## 🌐 Live Demo
 
-👉 [https://strelema-portal.vercel.app](https://strelema-portal.vercel.app)
+👉 [https://strelema-hrms-portal.vercel.app](https://strelema-hrms-portal.vercel.app)
 
 ---
 
@@ -53,16 +53,15 @@ This project includes both a **public landing page** and a **protected admin das
 | **Animation**          | Framer Motion                   |
 | **Data Handling**      | Axios (API Client)              |
 | **Build Tool**         | Vite                            |
-| **Deployment**         | Netlify                         |
+| **Deployment**         | vercel                         |
 
 ---
 
 ## 🧩 Folder Structure
+
 src/
 ├── assets/
-│ ├── partner/
-│ └── hero-section-1.png
-│
+│ 
 ├── components/
 │ ├── common/
 │ │ ├── GradientBackground.jsx

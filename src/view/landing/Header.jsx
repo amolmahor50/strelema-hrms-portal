@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/custom/Icon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MotionWrapper } from "@/components/common/MotionWrapper";
 import { PageLayout } from "@/components/common/PageLayout";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { name: "Destinations", path: "/destinations" },
@@ -51,20 +52,35 @@ export default function Header() {
             delay={0.2}
             className="hidden md:flex items-center gap-8"
           >
-            {navLinks.map((link, index) => (
-              <MotionWrapper key={link.name} type="slideUp" delay={0.1 * index}>
-                <Link
-                  to={link.path}
-                  className="text-gray-700 hover:text-amber-600 transition"
+            {navLinks.map((link, index) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <MotionWrapper
+                  key={link.name}
+                  type="slideUp"
+                  delay={0.1 * index}
                 >
-                  {link.name}
-                </Link>
-              </MotionWrapper>
-            ))}
+                  <Link
+                    to={link.path}
+                    className={`transition font-normal pb-1 ${
+                      isActive
+                        ? "text-amber-600 border-b-2 border-amber-500"
+                        : "text-gray-700 hover:text-amber-600"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </MotionWrapper>
+              );
+            })}
 
             <Link
               to="/login"
-              className="text-gray-700 hover:text-amber-600 transition"
+              className={`pb-1 transition ${
+                location.pathname === "/login"
+                  ? "text-amber-600 border-b-2 border-amber-500"
+                  : "text-gray-700 hover:text-amber-600"
+              }`}
             >
               Login
             </Link>
@@ -72,7 +88,8 @@ export default function Header() {
             <Link to="/signup">
               <Button
                 size="sm"
-                className="bg-amber-500 text-white hover:bg-amber-600"
+                variant="outline"
+                className="flex items-center gap-2 border-amber-400 text-amber-600 hover:bg-amber-100"
               >
                 Sign up
               </Button>
@@ -108,23 +125,34 @@ export default function Header() {
         } md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-sm`}
       >
         <nav className="flex flex-col items-center space-y-6 py-4">
-          {navLinks.map((link, i) => (
-            <MotionWrapper key={link.name} type="slideUp" delay={i * 0.1}>
-              <Link
-                to={link.path}
-                onClick={() => setMenuOpen(false)}
-                className="text-gray-700 hover:text-amber-600 transition text-sm"
-              >
-                {link.name}
-              </Link>
-            </MotionWrapper>
-          ))}
+          {navLinks.map((link, i) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <MotionWrapper key={link.name} type="slideUp" delay={i * 0.1}>
+                <Link
+                  to={link.path}
+                  onClick={() => setMenuOpen(false)}
+                  className={`transition text-sm font-normal ${
+                    isActive
+                      ? "text-amber-600 border-b-2 border-amber-500"
+                      : "text-gray-700 hover:text-amber-600"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              </MotionWrapper>
+            );
+          })}
 
           <MotionWrapper type="slideUp">
             <Link
               to="/login"
               onClick={() => setMenuOpen(false)}
-              className="text-gray-700 hover:text-amber-600 transition text-sm"
+              className={`transition text-sm ${
+                location.pathname === "/login"
+                  ? "text-amber-600 border-b-2 border-amber-500"
+                  : "text-gray-700 hover:text-amber-600"
+              }`}
             >
               Login
             </Link>
@@ -132,12 +160,18 @@ export default function Header() {
 
           <MotionWrapper type="slideUp">
             <Link to="/signup" onClick={() => setMenuOpen(false)}>
-              <Button size="sm">Sign up</Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2 border-amber-400 text-amber-600 hover:bg-amber-100"
+              >
+                Sign up
+              </Button>
             </Link>
           </MotionWrapper>
 
           <MotionWrapper type="slideUp">
-            <Button variant="goast" size="sm">
+            <Button variant="ghost" size="sm">
               <Icon name="Globe" />
               EN
             </Button>
